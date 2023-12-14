@@ -1,38 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;300&family=Poppins:wght@300&display=swap');
+
+* {
+  font-family: 'Playpen Sans', cursive;
+  font-family: 'Poppins', sans-serif;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  /* background-image: linear-gradient(79deg, #8674a4,#c66fbc 48%,#f7944D); */
+  background-image: url("https://wallpaperxyz.com/wp-content/uploads/Gif-Animated-Wallpaper-Background-Full-HD-Free-Download-for-PC-Macbook-261121-Wallpaperxyz.com-46.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-image: url('https://149842033.v2.pressablecdn.com/wp-content/uploads/2020/09/Responsive-CSS-Background-Pattern.jpg'); */
+  /* background-size: cover; */
 }
 
-.App-link {
-  color: #61dafb;
+.auth-form-container{  
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center;  */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.register-form{
+  max-width: 400px;
 }
+
+.login-form{
+  max-width: 350px;
+}
+
+/* .homepage-form{
+  max-width: 400px;
+} */
+
+.form-submit-buttons{
+  /* display: flex; */
+  /* margin-bottom:-50px ; */
+  color: #b5808f;
+  padding: 1rem 1rem;
+  margin-top: 0.5rem;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease; 
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.form-submit-buttons:hover{
+  transform: scale(1.05); 
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
+}
+
+
+
+.login-form input[type="username"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  color: #333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="tel"],
+.register-form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  color: #333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.register-form input[type="text"]:focus,
+.register-form input[type="email"]:focus,
+.register-form input[type="tel"]:focus,
+.register-form input[type="password"]:focus,
+.register-form input[type="text"]:hover,
+.register-form input[type="email"]:hover,
+.register-form input[type="tel"]:hover,
+.register-form input[type="password"]:hover {
+  outline: none;
+  border-color: #66afe9;
+}
+
+.register-form input[type="text"]:hover,
+.register-form input[type="email"]:hover,
+.register-form input[type="tel"]:hover,
+.register-form input[type="password"]:hover {
+  border-color: #ccc;
+}
+
+
+.login-form input[type="username"]:focus,
+.login-form input[type="password"]:focus,
+.login-form input[type="username"]:hover,
+.login-form input[type="password"]:hover {
+  outline: none;
+  border-color: #66afe9;
+}
+
+.login-form input[type="username"]:hover,
+.login-form input[type="password"]:hover {
+  border-color: #ccc;
+}
+
+
+
+.auth-form-container{
+  font-size: 25px;
+  padding: 1.5rem 4rem; 
+  padding-right: 5rem;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 0.5rem;
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+button {
+  border: none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #7439db; 
+  margin-top: 2px;
+}
+
+/* .link-btn {
+  background: none;
+  color: white;
+  text-decoration: underline;
+} */
+
+.Homepage-button{
+  text-align: center;
+  margin: 10px;
+  height: 70px;
+  width: 22%;
+  font-size: 25px;
+  color: #b5808f;
+  transition: all 0.3s ease; 
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.Homepage-button:hover{
+  transform: scale(1.05); 
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
+}
+
+.registration-option{
+  margin: 15px;
+  font-size: 18px;
+}
+
+.reg-form-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+  padding: 1.5rem 4rem; 
+  padding-right: 5rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 0.5rem;
+}
+
+.custom-toast-body {
+  font-family: 'Playpen Sans', cursive;
+  font-family: 'Poppins', sans-serif;
+  font-weight:200;
+  font-size:medium;
+  color: black;
+  /* background-color: linear-gradient(79deg, #8674a4,#c66fbc 48%,#f7944D);  */
+}
+
+
+.homepage-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  /* max-width: 300px; */
+  /* margin: 2rem 1rem;  */
+}
+
+label{
+  margin: auto;
+}
+
+.modal {
+  position: absolute;
+  font-size: 20px;
+  /* top: 20%;
+  left: 30%;
+  right: 30%;
+  bottom: 20%; */
+  border: 4px solid white;
+  background-color: #b5808f;
+  overflow: auto;
+  border-radius: 10px;
+  outline: none;
+  /* position: relative; */
+}
+
+.close-button {
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+  margin-top: 10px;
+  margin-bottom: -5px;
+  margin-right: 8px;
+  padding: 8px 12px;
+  background-color: #FCF6F5; 
+  border: 2px solid #b5808f; 
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease; 
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.close-button:hover{
+  transform: scale(1.05); 
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  padding: 15px;
+  padding-bottom: 60px; 
+}
+
+/* button{
+  margin: auto;
+} */  
+
+/* Adjust styles according to your preference */
