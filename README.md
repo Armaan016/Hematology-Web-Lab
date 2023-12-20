@@ -1,4 +1,3 @@
-Hematology Web Lab
 Welcome to the Hematology Web Lab, a platform designed for predicting whether an individual is anemic or non-anemic based on their Hemoglobin, MCH, MCV, MCHC, and gender information. This platform also facilitates user registration and login functionalities.
 
 Features
