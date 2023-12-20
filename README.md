@@ -32,11 +32,10 @@ Backend: Node.js, Express.js
 Database: MongoDB
 Machine Learning: Python (scikit-learn, joblib)
 Contributors
-Your Name - Developer and Maintainer
+Your Name - Mohammed Armaan Uddin
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Feel free to customize this README file according to your project's specifics, adding more details or adjusting sections as needed.
 
 
 
