@@ -1,24 +1,22 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
-const twilio = require('twilio')
+const twilio = require('twilio');
+const path = require('path');
 
 const fs = require('fs');
 const csv = require('csv-parser');
-// const path = require('path');
-// const { PythonShell } = require('python-shell');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-// const modelFilePath = path.join(__dirname, 'knn_model.joblib'); 
 
 const { spawn } = require('child_process');
 const { Number } = require('twilio/lib/twiml/VoiceResponse');
 
 
 const accountSid = 'ACfc0330ae14d714789b23d0d0fccb907c';
-const authToken = '17bfdf9f16527986a2ac4ef77115a243';
+const authToken = 'f24ce938c882a4d3417811b6d2c6bef4';
 const twilioPhoneNumber = '+13343669296';
 const client = twilio(accountSid, authToken);
 
@@ -43,14 +41,13 @@ const generateRandomOtp = () => {
 };
 
 app.post('/api/send-sms', async (req, res) => {
-    
     const { phoneNumber } = req.body;
+    console.log(phoneNumber);
     const userOtp = generateRandomOtp();
     userOtps.set(phoneNumber, userOtp);
     console.log(userOtp)
-    
+
     const message = `Your verification code for registering your account on Hematology Web Lab is: ${userOtp}. Thank you for choosing us!`;
-    
     try {
         await sendMessage(phoneNumber, message);
         res.sendStatus(200);
@@ -66,14 +63,12 @@ app.post('/api/verify-otp', (req, res) => {
     const storedOtp = userOtps.get(phoneNumber);
     console.log('Received OTP verification request:', { phoneNumber, userEnteredOtp });
 
-    
     if (storedOtp && userEnteredOtp === storedOtp) {
         res.status(200).json({ message: 'OTP verification successful' });
     } else {
         res.status(400).json({ message: 'Invalid OTP' });
     }
 });
-
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -100,14 +95,12 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('credentials', UserSchema);
 
-mongoose.connect('mongodb://0.0.0.0:27017/Hematology', {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true
-}).then(() => {
-    console.log('Connected to Hematology database');
-}).catch((err) => {
-    console.error('Connection error:', err);
-});
+mongoose.connect('mongodb://0.0.0.0:27017/Hematology')
+    .then(() => {
+        console.log('Connected to Hematology database');
+    }).catch((err) => {
+        console.error('Connection error:', err);
+    });
 
 app.post("/register", async (req, res) => {
     try {
@@ -124,24 +117,25 @@ app.post("/register", async (req, res) => {
     }
 });
 
+
 app.post("/login", async (req, res) => {
     const userobj = {
         username: req.body.username,
         pass: req.body.password,
     };
-    console.log(userobj)
+    console.log(userobj);
     try {
         const user = await User.findOne(userobj);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-        
+
         if (user.pass !== userobj.pass) {
             return res.status(401).json({ message: "Invalid password" });
-            
+
         }
         return res.status(200).json({ message: "Login successful" });
-        
+
     } catch (error) {
         console.error('Login error:', error);
         res.status(500).json({ message: "Something Went Wrong" });
@@ -178,9 +172,9 @@ const DataSchema = new mongoose.Schema({
         type: Object,
         required: true,
     }
-}, { collection: 'dataset' });
+}, { collection: 'predictions' });
 
-const data = mongoose.model('Dataset', DataSchema);
+const data = mongoose.model('predictions', DataSchema);
 
 const predict = async (inputData) => {
     return new Promise((resolve, reject) => {
@@ -198,7 +192,7 @@ const predict = async (inputData) => {
         });
 
         pythonProcess.on('close', (code) => {
-            if (code !== 0 || error) { 
+            if (code !== 0 || error) {
                 reject(`Failed to execute script with error: ${error}`);
             } else {
                 try {
@@ -218,7 +212,7 @@ app.post("/data", async (req, res) => {
         const genderValue = dataObj.gender == 0 ? 'Male' : 'Female';
 
         const inputData = {
-            Gender: dataObj.gender, 
+            Gender: dataObj.gender,
             Hemoglobin: dataObj.hemoglobin,
             MCH: dataObj.mch,
             MCHC: dataObj.mchc,
@@ -273,10 +267,11 @@ app.post("/data", async (req, res) => {
                     OptimizedSVM: mappedValues.OptimizedSVM,
                 }
             })
-            await newData.save();  
+            await newData.save();
+            console.log("Data saved!");
 
             console.log(preds);
-            res.json(preds); 
+            res.json(preds);
         }
         else {
             prediction1 = preds[model][0];
@@ -298,13 +293,86 @@ app.post("/data", async (req, res) => {
 
             console.log('Prediction:', result1);
             console.log('Optimized Prediction:', result2);
-            let preds2 = {model: [prediction1,prediction2]}
+            let preds2 = { model: [prediction1, prediction2] }
             res.json(preds2);
         }
 
     } catch (error) {
         console.error('Data saving error:', error);
         res.status(500).json({ message: "Something Went Wrong" });
+    }
+});
+
+const FeedbackSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+    },
+    feedback: {
+        type: String,
+        required: true,
+    },
+    rating: {
+        type: Number,
+        required: true,
+    }
+}, { collection: 'feedback' });
+
+const FeedbackModel = new mongoose.model('Feedback', FeedbackSchema);
+
+app.post("/feedback", async (req, res) => {
+    try {
+        const userFeedback = new FeedbackModel(req.body);
+        const result = await userFeedback.save();
+
+        res.status(201).json({ message: 'Feedback saved successfully', data: result });
+        console.log("Feedback data saved successfully!");
+    }
+    catch (error) {
+        console.error("Error saving feedback data: ", error);
+    }
+});
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
+
+app.post('/dlpredict', upload.single('image'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).send('No file uploaded.');
+        }
+
+        const imagePath = req.file.path;
+        // console.log("File Loaded!");
+        console.log(imagePath);
+
+        const pythonProcess = spawn('python', ['./DL.py', imagePath]);
+        console.log("Python file running!")
+        let prediction = '';
+
+        pythonProcess.stdout.on('data', (data) => {
+            const result = JSON.parse(data.toString());
+            prediction = result[0];
+            precision = result[1];
+            console.log("Prediction Result:", prediction);
+            console.log("Precision Rate:", precision)
+        });
+
+        pythonProcess.on('close', (code) => {
+            res.status(200).json({ prediction, precision });
+        });
+    } catch (error) {
+        console.error('Image prediction error:', error);
+        res.status(500).json({ message: 'Something went wrong!' });
     }
 });
 
@@ -333,11 +401,27 @@ app.get('/testData', (req, res) => {
 });
 
 
-app.get("/", (req, res) => {
-    res.send("App is Working");
-});
+// app.get("/", (req, res) => {
+//     res.send("App is Working");
+// });
 
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`App is listening at port ${PORT}`);
 });  
+
+const _dirname = path.dirname("");
+const buildPath = path.join(_dirname , "../build");
+
+app.use(express.static(buildPath));
+
+app.get("/", function(req,res){
+    res.sendFile(
+        path.join(_dirname, "../build/index.html"),
+        function(err) {
+            if(err) {
+                res.status(500).send(err);
+            }
+        }
+    );
+})

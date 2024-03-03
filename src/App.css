@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;300&family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Calligraffitti&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 
 * {
-  font-family: 'Playpen Sans', cursive;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Kurale', serif;
+  font-size: 18px;
 }
 
 .App {
@@ -13,52 +16,159 @@
   align-items: center;
   justify-content: center;
   color: white;
-  /* background-image: linear-gradient(79deg, #8674a4,#c66fbc 48%,#f7944D); */
-  background-image: url("https://wallpaperxyz.com/wp-content/uploads/Gif-Animated-Wallpaper-Background-Full-HD-Free-Download-for-PC-Macbook-261121-Wallpaperxyz.com-46.gif");
+  background-image: url("../public/Images/White\ medical\ background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  /* background-image: url('https://149842033.v2.pressablecdn.com/wp-content/uploads/2020/09/Responsive-CSS-Background-Pattern.jpg'); */
-  /* background-size: cover; */
 }
 
-.auth-form-container{  
+.welcome-message {
+  font-family: 'Bungee Spice', sans-serif;
+  font-size: 70px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-wrap: nowrap;
+}
+
+.whoosh-animation {
+  animation: whoosh 1.5s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.whoosh-animation1 {
+  animation: whoosh 3s ease-in-out;
+}
+
+/* .whoosh-animation2 {
+  animation: whoosh 6s ease-in-out;
+} */
+
+.whoosh-animation3 {
+  animation: whoosh 4.5s ease-in-out;
+}
+
+.whoosh-animation4 {
+  animation: whoosh 4.5s ease-in-out;
+}
+
+@keyframes whoosh {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.Homepage-button {
+  font-weight: bold;
+  margin: 40px;
+  font-size: 25px;
+  color: #FFFFFF;
+  background-color: #d02500;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.Homepage-button:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.flash-message {
+  color: #d02500;
+  font-size: 27px;
+  font-weight: bolder;
+  /* background-color: #d02500; */
+  padding: 0px 40px;
+  text-align: center;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.bottom-photo {
+  max-width: 100%;
+  height: auto;
+}
+
+.bottom-buttons {
+  font-size: 25px;
+  position: absolute;
+  bottom: 13px;
+  color: black;
+  text-decoration: underline;
+}
+
+.bottom-buttons:hover {
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.bottom-buttons a {
+  font-size: 40px;
+  margin: 0 180px;
+  color: black;
+}
+
+.auth-form-container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center;  */
 }
 
-.register-form{
+.homepage-form select::placeholder {
+  color: #808080;
+}
+
+.register-form {
   max-width: 400px;
 }
 
-.login-form{
+.register-form input {
+  border: 1px solid red;
+}
+
+.login-form {
   max-width: 350px;
 }
 
-/* .homepage-form{
-  max-width: 400px;
-} */
+.form-header {
+  font-family: 'Lemon', serif;
+  font-size: 60px;
+  text-align: center;
+  text-shadow: 3px 3px 0px orange;
+  text-decoration: underline;
+  letter-spacing: 0.02em;
+  color: #d02500;
+  white-space: nowrap;
+}
 
-.form-submit-buttons{
-  /* display: flex; */
-  /* margin-bottom:-50px ; */
-  color: #b5808f;
+.form-submit-buttons {
+  color: white;
+  background-color: #d02500;
   padding: 1rem 1rem;
   margin-top: 0.5rem;
   font-size: 18px;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.form-submit-buttons:hover{
-  transform: scale(1.05); 
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
+.form-submit-buttons:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
 }
-
-
 
 .login-form input[type="username"],
 .login-form input[type="password"] {
@@ -75,11 +185,10 @@
 
 .register-form input[type="text"],
 .register-form input[type="email"],
-.register-form input[type="tel"],
 .register-form input[type="password"] {
   width: 100%;
   padding: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f7f7f7;
@@ -90,7 +199,6 @@
 
 .register-form input[type="text"]:focus,
 .register-form input[type="email"]:focus,
-.register-form input[type="tel"]:focus,
 .register-form input[type="password"]:focus,
 .register-form input[type="text"]:hover,
 .register-form input[type="email"]:hover,
@@ -102,7 +210,6 @@
 
 .register-form input[type="text"]:hover,
 .register-form input[type="email"]:hover,
-.register-form input[type="tel"]:hover,
 .register-form input[type="password"]:hover {
   border-color: #ccc;
 }
@@ -121,20 +228,19 @@
   border-color: #ccc;
 }
 
-
-
-.auth-form-container{
+.auth-form-container {
   font-size: 25px;
-  padding: 1.5rem 4rem; 
-  padding-right: 5rem;
-  border: 2px solid white;
+  padding: 1.5rem 4rem;
+  margin: 10px 2px;
+  border: 2px solid #d02500;
   border-radius: 10px;
-  margin: 0.5rem;
 }
 
 label {
+  color: #d02500;
   text-align: left;
   padding: 0.25rem 0;
+  font-size: 25px;
 }
 
 input {
@@ -144,40 +250,27 @@ input {
   border-radius: 10px;
 }
 
+input::placeholder {
+  color: gray;
+}
+
 button {
   border: none;
-  background-color: white;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
-  color: #7439db; 
   margin-top: 2px;
 }
 
-/* .link-btn {
-  background: none;
-  color: white;
-  text-decoration: underline;
-} */
-
-.Homepage-button{
-  text-align: center;
-  margin: 10px;
-  height: 70px;
-  width: 22%;
-  font-size: 25px;
-  color: #b5808f;
-  transition: all 0.3s ease; 
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.phone-input {
+  margin: 7px;
 }
 
-
-.Homepage-button:hover{
-  transform: scale(1.05); 
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
+.special-label {
+  display: none !important;
 }
 
-.registration-option{
+.registration-option {
   margin: 15px;
   font-size: 18px;
 }
@@ -186,7 +279,7 @@ button {
   display: flex;
   flex-direction: column;
   font-size: 25px;
-  padding: 1.5rem 4rem; 
+  padding: 1.5rem 4rem;
   padding-right: 5rem;
   border: 1px solid white;
   border-radius: 10px;
@@ -196,10 +289,9 @@ button {
 .custom-toast-body {
   font-family: 'Playpen Sans', cursive;
   font-family: 'Poppins', sans-serif;
-  font-weight:200;
-  font-size:medium;
+  font-weight: 200;
+  font-size: medium;
   color: black;
-  /* background-color: linear-gradient(79deg, #8674a4,#c66fbc 48%,#f7944D);  */
 }
 
 
@@ -207,49 +299,43 @@ button {
   display: flex;
   flex-direction: column;
   width: 500px;
-  /* max-width: 300px; */
-  /* margin: 2rem 1rem;  */
 }
 
-label{
+label {
   margin: auto;
 }
 
 .modal {
   position: absolute;
   font-size: 20px;
-  /* top: 20%;
-  left: 30%;
-  right: 30%;
-  bottom: 20%; */
   border: 4px solid white;
-  background-color: #b5808f;
+  background-color: #d02500;
   overflow: auto;
   border-radius: 10px;
   outline: none;
-  /* position: relative; */
 }
 
 .close-button {
   position: absolute;
+  color: red;
   bottom: 12px;
   right: 10px;
   margin-top: 10px;
   margin-bottom: -5px;
   margin-right: 8px;
   padding: 8px 12px;
-  background-color: #FCF6F5; 
-  border: 2px solid #b5808f; 
+  background-color: #FCF6F5;
+  border: 2px solid #d02500;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.close-button:hover{
-  transform: scale(1.05); 
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4); 
+.close-button:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 .overlay {
@@ -266,11 +352,44 @@ label{
 
 .modal-content {
   padding: 15px;
-  padding-bottom: 60px; 
+  padding-bottom: 60px;
 }
 
-/* button{
-  margin: auto;
-} */  
+.logout-link {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
 
-/* Adjust styles according to your preference */
+.about-container {
+  text-align: center;
+  color: red;
+  padding: 30px;
+  /* margin: 5px 0; */
+}
+
+.aboutUs {
+  font-family: 'Bungee Spice', sans-serif;
+  font-size: 60px;
+  margin: -15px 0 0;
+  margin-bottom: 20px;
+}
+
+.about-header {
+  color: red;
+  margin-top: 0px;
+}
+
+.about-container p {
+  font-size: 22px;
+  color: orange;
+}
+
+.about-container h2,
+h3 {
+  font-size: 25px;
+  color: red;
+}

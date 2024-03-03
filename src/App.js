@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
-import Login from './Login';
-import Register from './Register';
-import EmailRegistration from './EmailRegistration'
-import MobileRegistration from './MobileRegistration'
-import HomePage from './Home';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import DLPredict from './Components/DLPredict';
+import MLPredict from './Components/MLPredict';
+import AboutUs from './Components/AboutUs';
+import ContactUs from './Components/ContactUs';
+import Feedback from './Components/Feedback';
+import MLorDL from './Components/MLorDL';
 import UsernameContext from './UsernameContext';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState('welcomePage');
   const [username, setUsername] = useState('');
 
   const goToLogin = () => {
@@ -18,38 +21,51 @@ function App() {
   const goToRegister = () => {
     setCurrentPage('register');
   }
+  const goToAbout = () => {
+    setCurrentPage('about');
+  }
+  const goToContact = () => {
+    setCurrentPage('contact');
+  }
+  const goToFeedback = () => {
+    setCurrentPage('feedback');
+  }
 
-  // const goToEmail = () => {
-  //   setCurrentPage('email'); 
-  // }
-  // const goToPhone = () => {
-  //   setCurrentPage('phone'); 
-  // }
-
-  // const goToHomepage = () => {
-  //   setCurrentPage('homepage');
-  // }
+  const goToWelcomePage = () => {
+    setCurrentPage('welcomePage');
+  }
 
   return (
     <div className="App">
       <UsernameContext.Provider value={{ username, setUsername }}>
-        {currentPage === 'home' && (
+        {currentPage === 'welcomePage' && (
           <div>
-            <h1 style={{ fontSize: '60px' }}>Welcome to Hematology Web Lab</h1>
-            {/* <h2 style={{fontSize:'20px'}}>Would you like to login or register?</h2> */}
-            <button className='Homepage-button' onClick={goToLogin}>Login</button>
-            <button className='Homepage-button' onClick={goToRegister}>Register</button>
-            {/* <button className='Homepage-button' onClick={goToEmail}>Email</button> */}
-            {/* <button className='Homepage-button' onClick={goToPhone}>Phone Number</button> */}
-            {/* <button className='Homepage-button' onClick={goToHomepage}>HomePage</button> */}
+            <div className={'welcome-message whoosh-animation'}>
+              Welcome to Hematology Web Lab
+            </div>
+            <div>
+              <button className='Homepage-button whoosh-animation1' style={{ marginBottom: '10px' }} onClick={goToLogin}>Login</button>
+              <br />
+              <button className='Homepage-button whoosh-animation1' style={{ marginTop: '40px', marginBottom: '100px' }} onClick={goToRegister}>Register</button>
+            </div>
+            <div className="flash-message whoosh-animation4">
+              Dive into the Hematology Web Lab experience! Login if you&apos;re already part of our community or Register to unlock new insights and features.</div>
+            <div className="whoosh-animation3">
+              <a className='bottom-buttons' style={{ left: '10%' }} onClick={goToAbout}>About Us</a>
+              <a className='bottom-buttons' style={{ left: '46%' }} onClick={goToContact}>Contact Us</a>
+              <a className='bottom-buttons' style={{ left: '84%' }} onClick={goToFeedback}>Feedback</a>
+            </div>
           </div>
         )}
 
         {currentPage === 'login' && <Login onFormSwitch={setCurrentPage} />}
         {currentPage === 'register' && <Register onFormSwitch={setCurrentPage} />}
-        {currentPage === 'email' && <EmailRegistration onFormSwitch={setCurrentPage} />}
-        {currentPage === 'phone' && <MobileRegistration onFormSwitch={setCurrentPage} />}
-        {currentPage === 'homepage' && <HomePage onFormSwitch={setCurrentPage} />}
+        {currentPage === 'mlpredict' && <MLPredict onFormSwitch={setCurrentPage} />}
+        {currentPage === 'dlpredict' && <DLPredict onFormSwitch={setCurrentPage} />}
+        {currentPage === 'about' && <AboutUs onFormSwitch={goToWelcomePage} />}
+        {currentPage === 'contact' && <ContactUs onFormSwitch={goToWelcomePage} />}
+        {currentPage === 'feedback' && <Feedback onFormSwitch={goToWelcomePage} />}
+        {currentPage === 'MLorDL' && <MLorDL onFormSwitch={setCurrentPage} />}
       </UsernameContext.Provider >
     </div>
   );
