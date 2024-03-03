@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8b40d298.css",
+    "main.js": "/static/js/main.6a7953a5.js",
+    "static/js/651.56cc21be.chunk.js": "/static/js/651.56cc21be.chunk.js",
+    "static/media/White medical background.jpg": "/static/media/White medical background.b97f00de70eb4103fde4.jpg",
+    "index.html": "/index.html",
+    "main.8b40d298.css.map": "/static/css/main.8b40d298.css.map",
+    "main.6a7953a5.js.map": "/static/js/main.6a7953a5.js.map",
+    "651.56cc21be.chunk.js.map": "/static/js/651.56cc21be.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b40d298.css",
+    "static/js/main.6a7953a5.js"
+  ]
+}

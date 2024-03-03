@@ -410,14 +410,14 @@ app.listen(PORT, () => {
     console.log(`App is listening at port ${PORT}`);
 });  
 
-const _dirname = path.dirname("");
-const buildPath = path.join(_dirname , "../build");
+const __dirname = path.dirname("");
+const buildPath = path.join(__dirname , "../build");
 
 app.use(express.static(buildPath));
 
 app.get("/", function(req,res){
     res.sendFile(
-        path.join(_dirname, "../build/index.html"),
+        path.join(__dirname, "../build/index.html"),
         function(err) {
             if(err) {
                 res.status(500).send(err);
