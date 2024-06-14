@@ -9,10 +9,10 @@ User Login: Registered users can securely access the application using their cre
 Prediction Service: Users can input blood test values and gender to receive anemia predictions.
 
 Setup Instructions
-Clone Repository: Use git clone https://github.com/Armaan016 to clone this project to your local machine.
-Install Dependencies: Install all required libraries using npm install.
+Clone Repository: Use 'git clone https://github.com/Armaan016/Hematology-Web-Lab.git' to clone this project to your local machine.
+Install Dependencies: Install all required libraries using 'npm install'.
 Database Setup: Ensure MongoDB is installed and running locally. Update database configurations if necessary.
-Run Application: Start the application with npm start.
+Run Application: Start the application with 'npm start'.
 Access Application: Open http://localhost:3000 in your web browser.
 
 Usage
