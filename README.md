@@ -15,7 +15,7 @@ Database Setup: Ensure MongoDB is installed and running locally. Update database
 Run Application: Start the application with 'npm start'.
 Access Application: Open http://localhost:3000 in your web browser.
 
-Usage
+Project Usage: 
 User Registration:
 Navigate to the registration page.
 Fill out the required details.
@@ -29,10 +29,10 @@ Click "Login" to access the application.
 Prediction Service:
 Access the prediction page.
 Input your blood test values and gender or upload an image of a white blood cell.
-Click "Predict" to get an anemia prediction.
+Click "Predict" to get an anemia prediction or WBC classification.
 
 Contributors
-Your Name - Mohammed Armaan Uddin
+Mohammed Armaan Uddin
 
 
 
