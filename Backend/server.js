@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 const twilio = require('twilio');
+const dotenv = require('dotenv');
+dotenv.config();
 // const path = require('path');
 
 const fs = require('fs');
@@ -15,9 +17,9 @@ const { spawn } = require('child_process');
 const { Number } = require('twilio/lib/twiml/VoiceResponse');
 
 // Twilio recovery code: "G5WZGNX6QMD5Q95XRL98XLXA"
-const accountSid = 'ACfc0330ae14d714789b23d0d0fccb907c';
-const authToken = '3b3958cac0d674013931fa789cb09613';
-const twilioPhoneNumber = '+13343669296';
+const accountSid = process.env.ACCOUNTSID;
+const authToken = process.env.AUTHTOKEN;
+const twilioPhoneNumber = process.env.TWILIONUM;
 const client = twilio(accountSid, authToken);
 
 
