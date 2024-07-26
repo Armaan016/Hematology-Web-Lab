@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 const twilio = require('twilio');
-const path = require('path');
+// const path = require('path');
 
 const fs = require('fs');
 const csv = require('csv-parser');
@@ -14,9 +14,9 @@ app.use(cors());
 const { spawn } = require('child_process');
 const { Number } = require('twilio/lib/twiml/VoiceResponse');
 
-
+// Twilio recovery code: "G5WZGNX6QMD5Q95XRL98XLXA"
 const accountSid = 'ACfc0330ae14d714789b23d0d0fccb907c';
-const authToken = 'f24ce938c882a4d3417811b6d2c6bef4';
+const authToken = '3b3958cac0d674013931fa789cb09613';
 const twilioPhoneNumber = '+13343669296';
 const client = twilio(accountSid, authToken);
 
@@ -231,7 +231,7 @@ app.post("/data", async (req, res) => {
 
         if (model == 'all') {
             const mappedValues = {
-                KNN: preds['KNN'][0] == 0 ? 'Non-Anemic' : 'Anemic',
+                KNN: preds['KNN'][0] === 0 ? 'Non-Anemic' : 'Anemic',
                 OptimizedKNN: preds['KNN'][1] === 0 ? 'Non-Anemic' : 'Anemic',
                 GNB: preds['GNB'][0] === 0 ? 'Non-Anemic' : 'Anemic',
                 OptimizedGNB: preds['GNB'][1] === 0 ? 'Non-Anemic' : 'Anemic',
@@ -362,13 +362,13 @@ app.post('/dlpredict', upload.single('image'), async (req, res) => {
         pythonProcess.stdout.on('data', (data) => {
             const result = JSON.parse(data.toString());
             prediction = result[0];
-            precision = result[1];
+            // let precision = 97;
             console.log("Prediction Result:", prediction);
-            console.log("Precision Rate:", precision)
+            // console.log("Precision Rate:", precision)
         });
 
         pythonProcess.on('close', (code) => {
-            res.status(200).json({ prediction, precision });
+            res.status(200).json({ prediction });
         });
     } catch (error) {
         console.error('Image prediction error:', error);
@@ -398,30 +398,30 @@ app.get('/testData', (req, res) => {
             console.log(selectedData);
             res.json(selectedData);
         });
+}); 
+
+
+app.get("/", (req, res) => {
+    res.send("App is Working");
 });
-
-
-// app.get("/", (req, res) => {
-//     res.send("App is Working");
-// });
 
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`App is listening at port ${PORT}`);
 });  
 
-const __dirname = path.dirname("");
-const buildPath = path.join(__dirname , "../build");
+// const __dirname = path.dirname("");
+// const buildPath = path.join(__dirname , "../build");
 
-app.use(express.static(buildPath));
+// app.use(express.static(buildPath));
 
-app.get("/", function(req,res){
-    res.sendFile(
-        path.join(__dirname, "../build/index.html"),
-        function(err) {
-            if(err) {
-                res.status(500).send(err);
-            }
-        }
-    );
-})
+// app.get("/", function(req,res){
+//     res.sendFile(
+//         path.join(__dirname, "../build/index.html"),
+//         function(err) {
+//             if(err) {
+//                 res.status(500).send(err);
+//             }
+//         }
+//     );
+// })

@@ -9,7 +9,7 @@ function AboutUs({onFormSwitch}) {
   return (
     <div className='about-container'>
       <h1 className='aboutUs'>About Us</h1>
-      <p style={{ color: 'red' }}>Project by: <strong style={{ color: 'orange' }}>Mohammed Armaan Uddin, 22BD1A6611, CSM - A, 2nd Year-1st Sem  </strong></p>
+      <p style={{ color: 'red' }}>Done by: <strong style={{ color: 'orange' }}>Mohammed Armaan Uddin, 22BD1A6611, CSM - A, 2nd Year-1st Sem  </strong></p>
       <h2 className='about-header'>Welcome to Hematology Web Lab</h2>
       <p>
         This is an innovative platform for users to assess and predict their anemia status conveniently. This MERN-based website empowers users to make predictions based on essential health parameters.

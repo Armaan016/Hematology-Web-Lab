@@ -3,7 +3,7 @@ from joblib import load
 import json
 import sys
 
-model = load(r"C:\Users\raufu\OneDrive\Desktop\React\hematology\ML Models\knn_model2.joblib")
+model = load("../ML Models/knn_model2.joblib")
 
 input_data = json.loads(sys.argv[1])
 

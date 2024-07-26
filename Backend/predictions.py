@@ -3,18 +3,18 @@ from joblib import load
 import json
 import sys
 
-knn_model = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\knn_model.joblib")
-knn_model2 = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\knn_model2.joblib")
-gnb_model = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\gnb_model.joblib")
-gnb_model2 = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\gnb_model2.joblib")
-logReg_model = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\logisticReg_model.joblib")
-logReg_model2 = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\logisticReg_model2.joblib")
-dt_model = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\dt_model.joblib")
-dt_model2 = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\dt_model2.joblib")
-rf_model = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\rf_model.joblib")
-rf_model2 = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\rf_model2.joblib")
-svm_model = model = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\svm_model.joblib")
-svm_model2 = model = load(r"C:\Users\raufu\OneDrive\Desktop\Hematology PS Project\hematology\ML Models\svm_model2.joblib")
+knn_model = load("../ML Models/knn_model.joblib")
+knn_model2 = load("../ML Models/knn_model2.joblib")
+gnb_model = load("../ML Models/gnb_model.joblib")
+gnb_model2 = load("../ML Models/gnb_model2.joblib")
+logReg_model = load("../ML Models/logisticReg_model.joblib")
+logReg_model2 = load("../ML Models/logisticReg_model2.joblib")
+dt_model = load("../ML Models/dt_model.joblib")
+dt_model2 = load("../ML Models/dt_model2.joblib")
+rf_model = load("../ML Models/rf_model.joblib")
+rf_model2 = load("../ML Models/rf_model2.joblib")
+svm_model = model = load("../ML Models/svm_model.joblib")
+svm_model2 = model = load("../ML Models/svm_model2.joblib")
 
 def predict_knn(input_data):
     new_point = pd.DataFrame({

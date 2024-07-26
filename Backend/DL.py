@@ -7,7 +7,7 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
 
-model=pickle.load(open("C:\\Users\\raufu\\OneDrive\\Desktop\\Blood Cell Dataset\\Model","rb"))
+model=pickle.load(open("./Model","rb"))
 
 # dir_path=r'Lymphocyte image.jpeg'
 dir_path=sys.argv[1]

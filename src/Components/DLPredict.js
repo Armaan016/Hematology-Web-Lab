@@ -10,7 +10,7 @@ const DLPredict = (props) => {
   // const [precision, setPrecision] = useState(0.0);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [filePreview, setFilePreview] = useState('');
-  const [groundTruth, setGroundTruth] = useState(null);
+  // const [groundTruth, setGroundTruth] = useState(null);
   const [dragStyles, setDragStyles] = useState({
     background: 'none',
     border: '2px dashed #ccc',
@@ -24,11 +24,11 @@ const DLPredict = (props) => {
     const file = e.target.files[0];
     setSelectedFile(file);
 
-    const fileNameParts = file.name.split('_');
-    const groundTruth = fileNameParts[0];
-    if (groundTruth == 'LYMPHOCYTE' || groundTruth == 'MONOCYTE') {
-      setGroundTruth(groundTruth);
-    }
+    // const fileNameParts = file.name.split('_');
+    // const groundTruth = fileNameParts[0];
+    // if (groundTruth == 'LYMPHOCYTE' || groundTruth == 'MONOCYTE') {
+    //   setGroundTruth(groundTruth);
+    // }
 
     console.log(selectedFile);
     // console.log(selectedFile.name);
@@ -54,11 +54,11 @@ const DLPredict = (props) => {
     const file = e.dataTransfer.files[0];
     setSelectedFile(file);
 
-    const fileNameParts = file.name.split('_');
-    const groundTruth = fileNameParts[0];
-    if (groundTruth == 'LYMPHOCYTE' || groundTruth == 'MONOCYTE') {
-      setGroundTruth(groundTruth);
-    }
+    // const fileNameParts = file.name.split('_');
+    // const groundTruth = fileNameParts[0];
+    // if (groundTruth == 'LYMPHOCYTE' || groundTruth == 'MONOCYTE') {
+    //   setGroundTruth(groundTruth);
+    // }
 
     console.log("File received!");
     // console.log(selectedFile.name);
@@ -188,7 +188,7 @@ const DLPredict = (props) => {
               {selectedFile && (
                 <div>
                   {filePreview && <img src={filePreview} alt="Uploaded File Preview" style={{ maxWidth: '300px', maxHeight: '300px' }} />}
-                  <p style={{ color: '#f9f9f9' }}>Ground Truth: {groundTruth !== null ? groundTruth : 'N.A'}</p>
+                  {/* <p style={{ color: '#f9f9f9' }}>Ground Truth: {groundTruth !== null ? groundTruth : 'N.A'}</p> */}
                   <p style={{ color: '#f9f9f9' }}>Predicted class: {prediction}</p>
                   {/* <p style={{ color: '#f9f9f9' }}>Precision Rate: {precision}%</p> */}
                 </div>
