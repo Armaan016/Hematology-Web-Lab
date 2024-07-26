@@ -23,7 +23,7 @@ const Login = (props) => {
                 }
             });
             result = await result.json();
-            console.warn(result);
+            console.warn(result); 
             if (result.message === "Login successful") {
                 toast.success("Login successful");
                 usernameContext.username = "";

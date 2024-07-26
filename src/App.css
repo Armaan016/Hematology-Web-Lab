@@ -39,7 +39,7 @@
 }
 
 .whoosh-animation1 {
-  animation: whoosh 3s ease-in-out;
+  animation: whoosh 2s ease-in-out;
 }
 
 /* .whoosh-animation2 {
@@ -47,11 +47,11 @@
 } */
 
 .whoosh-animation3 {
-  animation: whoosh 4.5s ease-in-out;
+  animation: whoosh 2.5s ease-in-out;
 }
 
 .whoosh-animation4 {
-  animation: whoosh 4.5s ease-in-out;
+  animation: whoosh 2.5s ease-in-out;
 }
 
 @keyframes whoosh {
